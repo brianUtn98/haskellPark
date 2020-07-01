@@ -54,3 +54,18 @@ todas = [montanaRusa 60 10,caidaLibre 10,mundoMaya,showDeMagia,(\persona -> mund
 
 --visitar ana todas
 --Persona {nombre = "Ana", nivelEmocion = 49.610004, nivelSatisfaccion = 50.0, nivelCultura = 86.4}
+
+--Punto 5 
+
+--Funciones auxiliares.
+
+emocionada::Persona->Bool
+emocionada persona = nivelEmocion persona > 60
+
+satisfecha::Persona->Bool
+satisfecha persona = nivelSatisfaccion persona >50
+
+
+--
+estanFelices::[Persona]->Bool
+estanFelices personas = all (satisfecha).filter (emocionada.montanaRusa 150 50.mundoMaya) $ personas
