@@ -38,3 +38,9 @@ showDeMagia::Atraccion
 showDeMagia persona 
   | nivelCultura persona > 50 = persona {nivelSatisfaccion = nivelSatisfaccion persona + 20}
   | otherwise = persona {nivelEmocion = nivelEmocion persona + 30}
+
+--Punto 3 Visitar atracciones
+
+visitar::Persona->[Atraccion]->Persona
+visitar persona atracciones = foldl(flip($)) persona atracciones
+
