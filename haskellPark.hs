@@ -44,3 +44,13 @@ showDeMagia persona
 visitar::Persona->[Atraccion]->Persona
 visitar persona atracciones = foldl(flip($)) persona atracciones
 
+--Punto 4 ejemplo de invocación y respuesta de visitar, con una función inventada (sin funciones auxiliares)
+
+--Para resolver la función inventada se debe utilizar una lambda.
+todas::[Atraccion]
+todas = [montanaRusa 60 10,caidaLibre 10,mundoMaya,showDeMagia,(\persona -> mundoMaya.showDeMagia $ persona)]
+
+--En mi caso la función que inventé te deja como si hubieses asistido a un show de magia y luego a mundo maya.
+
+--visitar ana todas
+--Persona {nombre = "Ana", nivelEmocion = 49.610004, nivelSatisfaccion = 50.0, nivelCultura = 86.4}
