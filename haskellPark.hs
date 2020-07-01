@@ -83,3 +83,16 @@ sumaEmocionSatisfaccion persona = nivelSatisfaccion persona + nivelEmocion perso
 
 estaContenta::Persona->[Atraccion]->Bool
 estaContenta persona atracciones = contenta (visitar persona atracciones)
+
+--Punto 7
+--a)
+personasInfinitas::[Persona]
+personasInfinitas = ana:personasInfinitas
+
+h f xs = (head.filter f) xs
+--No se podría aplicar un conjunto infinito de atracciones en visitar,
+-- ya que necesitaría recorrer toda la lista para que la persona se suba a todas y cada una de las atracciones.
+--b)
+--Sí se puede, ya que al utilizar evaluación diferida, solo buscará la primer persona que esté contenta. 
+
+--Falta ejemplo.
