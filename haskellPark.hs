@@ -69,3 +69,17 @@ satisfecha persona = nivelSatisfaccion persona >50
 --
 estanFelices::[Persona]->Bool
 estanFelices personas = all (satisfecha).filter (emocionada.montanaRusa 150 50.mundoMaya) $ personas
+
+--Punto 6
+
+--Funciones auxiliares
+
+contenta::Persona->Bool
+contenta persona = sumaEmocionSatisfaccion persona > 200
+
+sumaEmocionSatisfaccion::Persona->Float
+sumaEmocionSatisfaccion persona = nivelSatisfaccion persona + nivelEmocion persona
+--
+
+estaContenta::Persona->[Atraccion]->Bool
+estaContenta persona atracciones = contenta (visitar persona atracciones)
