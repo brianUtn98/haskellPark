@@ -5,4 +5,4 @@ Buenas gente! Les traigo el parcial tomado el 19/06 con su posible solución. Fa
 
 [**Enunciado del parcial**](https://docs.google.com/document/d/1vtkBNspsGJZDgynXhY8ccN1lVEpwGonTCAlo2Zam3IE/edit)
 
-[**Resolución**](https://github.com/brianUtn98/haskellPark/haskellPark.hs)
+[**Resolución**](https://github.com/brianUtn98/haskellPark/blob/master/haskellPark.hs)
