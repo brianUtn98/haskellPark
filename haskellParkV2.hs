@@ -33,8 +33,8 @@ caidaLibre metrosCaida unaPersona = modificarEmocion (+(metrosCaida*0.2)) unaPer
 mundoMaya :: Atraccion
 mundoMaya unaPersona = modificarEmocion (*1.10).modificarCultura(*1.20) $ unaPersona
 
-showdeMagia :: Atraccion
-showdeMagia unaPersona 
+showDeMagia :: Atraccion
+showDeMagia unaPersona 
 	| (nivelCultura unaPersona) > 50 = modificarSatisfaccion (+20) unaPersona
 	| otherwise = modificarEmocion (+30) unaPersona
 
