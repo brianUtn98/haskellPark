@@ -81,3 +81,5 @@ h f xs = (head.filter f) xs
 --Persona {nombre = "Ana", satisfaccion = 10, emocion = 20, cultura = 60}
 
 --c Realizar una modificación a la función del punto 5 para que admita personas infinitas (conviene cambiar el nombre a la función también.)
+algunaEstaFeliz :: [Persona] -> Bool
+algunaEstaFeliz personas = any (estaSatisfecha).filter (estaEmocionada.mundoMaya.montañaRusa 80 10) $ personas
