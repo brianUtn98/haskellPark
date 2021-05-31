@@ -18,8 +18,9 @@ type Atraccion = Persona -> Persona
 --montañaRusa
 montañaRusa :: Number -> Number -> Atraccion
 montañaRusa velocidad altura persona
-    | (>50) velocidad = aumentarEmocion (velocidad * 0.15 + altura) persona
+    | (>50) velocidad = aumentarEmocion ((+altura).(*0.15) $ velocidad) persona
     | otherwise = disminuirEmocion (emocion persona * 0.05) . disminuirSatisfaccion (satisfaccion persona * 0.1) $ persona
+    | otherwise = disminuirEmocion ((*0.05).emocion $ persona) . disminuirSatisfaccion ((*0.1).satisfaccion $ persona) $ persona
 
 aumentarEmocion cantidad persona = persona {emocion = emocion persona + cantidad}
 
@@ -33,7 +34,7 @@ caidaLibre metros persona = aumentarEmocion (metros * 0.2) persona
 
 --mundoMaya
 mundoMaya :: Atraccion
-mundoMaya persona = aumentarEmocion (emocion persona * 0.1) . aumentarCultura (cultura persona * 0.2) $ persona
+mundoMaya persona = aumentarEmocion ((*0.1).emocion $ persona) . aumentarCultura ((*0.2).cultura $ persona) $ persona
 
 aumentarCultura cantidad persona = persona { cultura = cultura persona + cantidad}
 
@@ -65,9 +66,9 @@ estaSatisfecha = (>50).satisfaccion
 --Punto 6
 --estaContenta
 estaContenta :: [Atraccion]-> Persona -> Bool
-estaContenta atracciones persona = cumpleContenta (visitar atracciones persona)
+estaContenta atracciones persona = cumpleContenta.visitar atracciones $ persona
 
-cumpleContenta persona = (>100) (satisfaccion persona + emocion persona)
+cumpleContenta persona = (>100).(+satisfaccion persona).emocion $ persona
 
 --Punto 7
 --a No se podría usar una lista infinita en 
@@ -79,7 +80,3 @@ h f xs = (head.filter f) xs
 
 --h (estaContenta todas) personasInfinitas
 --Persona {nombre = "Ana", satisfaccion = 10, emocion = 20, cultura = 60}
-
---c Realizar una modificación a la función del punto 5 para que admita personas infinitas (conviene cambiar el nombre a la función también.)
-algunaEstaFeliz :: [Persona] -> Bool
-algunaEstaFeliz personas = any (estaSatisfecha).filter (estaEmocionada.mundoMaya.montañaRusa 80 10) $ personas
