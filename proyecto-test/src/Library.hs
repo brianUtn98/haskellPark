@@ -11,6 +11,8 @@ data Persona = Persona {
 
 ana = Persona "Ana" 10 20 60
 juan = Persona "Juan" 20 30 40
+grinch = Persona "Grinch" 1 150 1
+leopoldo = Persona "Leopoldo" 1 1 1
 
 --Punto 2
 type Atraccion = Persona -> Persona
@@ -19,7 +21,6 @@ type Atraccion = Persona -> Persona
 montañaRusa :: Number -> Number -> Atraccion
 montañaRusa velocidad altura persona
     | (>50) velocidad = aumentarEmocion ((+altura).(*0.15) $ velocidad) persona
-    | otherwise = disminuirEmocion (emocion persona * 0.05) . disminuirSatisfaccion (satisfaccion persona * 0.1) $ persona
     | otherwise = disminuirEmocion ((*0.05).emocion $ persona) . disminuirSatisfaccion ((*0.1).satisfaccion $ persona) $ persona
 
 aumentarEmocion cantidad persona = persona {emocion = emocion persona + cantidad}
@@ -54,6 +55,7 @@ visitar atracciones persona = foldl (flip($)) persona atracciones
 --Mi abstraccion inventada, te deja como asistir a una montaña rusa de altura 50 y velocidad 100 y a un show de magia.
 
 todas = [montañaRusa 20 20,caidaLibre 50, mundoMaya, showDeMagia, (\persona -> (montañaRusa 100 50).showDeMagia $ persona)]
+atraccionInventada = (\persona -> (montañaRusa 100 50).showDeMagia $ persona)
 --visitar todas ana
 
 --Punto 5
