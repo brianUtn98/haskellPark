@@ -3,8 +3,6 @@ import PdePreludat
 import Library
 import Test.Hspec
 
--- ana = Persona "Ana" 10 20 60
--- juan = Persona "Juan" 20 30 40
 -- grinch = Persona "Grinch" 1 150 1
 -- leopoldo = Persona "Leopoldo" 1 1 1
 
